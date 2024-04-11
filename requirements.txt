@@ -1,0 +1,8 @@
+cloudscraper==1.2.66
+scikit-learn
+matplotlib
+numpy
+opencv-python
+transformers
+torch
+requests=2.31.0
