@@ -6,21 +6,18 @@ from transformers.utils import logging
 
 logging.set_verbosity_error()
 
-def getlabels():
+def getBrandsLabels():
     saver = Saver()
-    labels = ["Champion", "Adidas", "NFL", "Nike", "Reebok", "NHL", "Hunder Armour"]
-    # labels = ["Red", "Blue", "Black", "Orange", "White", "Corail", "Gray", "Yellow", "Cyan", "Violet"]
-    # labels = ["XS", "S", "M", "L", "XL"]
+    return [x.title for x in saver.loadBrands()]
 
-    # return [e + " cloth brand" for e in labels]
-    labels = []
-    for x in saver.loadBrands():
-        labels.append(x.title)
-    return labels
+def getSizesLabels():
+    saver = Saver()
+    return [x.title for x in saver.loadSizes()][:-1]
 
-# model="rONIVALDO/brand-detector"
-# pipe = pipeline("image-classification", model="barten/vit-base-patch16-224-brand")
-
-def getbrands(images):
+def getBrands(images):
     pipe = pipeline("zero-shot-image-classification", model="openai/clip-vit-large-patch14")
-    return [pipe(image, candidate_labels=getlabels())[0] for image in images]
+    return [pipe(image, candidate_labels=getBrandsLabels())[0] for image in images]
+
+def getSizes(images):
+    pipe = pipeline("zero-shot-image-classification", model="openai/clip-vit-large-patch14")
+    return [pipe(image, candidate_labels=getSizesLabels())[0] for image in images]

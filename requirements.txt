@@ -5,4 +5,5 @@ numpy
 opencv-python
 transformers
 torch
-requests=2.31.0
+requests==2.31.0
+tqdm

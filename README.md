@@ -59,4 +59,19 @@ Note that the datadome cookies is requiered only if you want to post an article.
 
 ## Commands
 
-You can type `help` to list all the available commands and a small description.
+You can type `help` to list all the available commands and a small description. Here are some implemented use case:
+- fetch items: will download all items or item with a specific ID from an account (the one in the cookie.txt file so it's not necessarily yours)
+- list items: locally (saved from fetch) or remotly (account in the cookie.txt file)
+- delete items: locally (saved from fetch) or remotely (work only if your are the owner)
+- post items: all locally saved items (from fetch) or item with specific ID. The images will also be posted.
+
+## Limitations
+
+Not all data are saved for items, only:
+- price
+- title
+- description
+- brand
+- colors
+- size
+- catalog id (what's the item)
